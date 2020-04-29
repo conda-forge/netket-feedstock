@@ -1,18 +1,18 @@
 {% set name = "netket" %}
-{% set version = "2.1" %}
+{% set version = "3.0" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
   url: https://github.com/netket/netket/archive/v{{ version }}.tar.gz
-  sha256: 041d2b058c5d2945bf0a4194ad2bf3c426ad9b6ce0dd323a81a7154bc6e45452
+  sha256: adad2f1fe5edc23172abafb6f8cbf9e3fa18e07ea033363d2e1c727ba9a029ee
 
 build:
   number: 0
   skip: true  # [win or py<37]
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv --install-option=--cmake-args='-DNETKET_USE_LAPACK=OFF -DCMAKE_BUILD_TYPE=Release -DNETKET_USE_OPENMP=ON -DNETKET_USE_BLAS=ON -DNETKET_USE_SLEEF=ON'"
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv --install-option=--cmake-args='-DNETKET_USE_LAPACK=OFF -DCMAKE_BUILD_TYPE=Release -DNETKET_USE_OPENMP=ON -DNETKET_USE_BLAS=ON -DNETKET_USE_SLEEF=ON'
 
 requirements:
   build:
@@ -29,7 +29,7 @@ requirements:
     - llvm-openmp  # [osx]
   run:
     - numpy >=1.16
-    - python 
+    - python
     - scipy >=1.2.1
     - numba >=0.48
     - mpich
@@ -45,7 +45,7 @@ about:
   license: Apache-2.0
   license_family: APACHE
   license_file: LICENSE
-  summary: 'Machine Learning for Many-Body Quantum Systems'
+  summary: Machine Learning for Many-Body Quantum Systems
   description: |
     NetKet is an open-source project delivering cutting-edge methods 
     for the study of many-body quantum systems with artificial neural 
