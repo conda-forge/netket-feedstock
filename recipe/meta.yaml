@@ -19,12 +19,12 @@ requirements:
   host:
     - python
     - pip
-    - setuptools >=50
+    - setuptools >=45
     - setuptools_scm >=3.4
     - toml
   run:
     - python
-    - numpy >=1.20
+    - numpy 
     - scipy >=1.5.2
     - networkx >=2.4
     - jax >=0.2.9
