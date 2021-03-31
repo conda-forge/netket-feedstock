@@ -1,13 +1,13 @@
 {% set name = "netket" %}
-{% set version = "3.0b1" %}
+{% set version = "3.0b1.post3" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 266ae2a995331659d6ddf8e5ad9aa843c4e2a3c090e1733d6d91b466fd09912c
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/netket-{{ version }}.tar.gz
+  sha256: 9d15d32ccd07311e466627d628a236aa86e0bd8a4c799d19177934a137766ba9
 
 build:
   number: 0
@@ -24,7 +24,7 @@ requirements:
     - toml
   run:
     - python >=3.8
-    - numpy 
+    - numpy >=1.18
     - scipy >=1.5.2
     - networkx >=2.4
     - jax >=0.2.9
@@ -33,12 +33,17 @@ requirements:
     - optax >=0.0.2
     - mpi4py >=3.0.1
     - mpi4jax >=0.2.16
-    - numba >=0.52
+    - numba >=0.52.0
     - orjson >=3.4
-    - tqdm >=4.56.2
+    - tqdm >=4.56.2    
+
 test:
   imports:
     - netket
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://www.netket.org
