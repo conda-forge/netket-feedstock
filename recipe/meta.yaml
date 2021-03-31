@@ -1,44 +1,49 @@
 {% set name = "netket" %}
-{% set version = "2.1.1" %}
+{% set version = "3.0b1.post3" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: https://github.com/netket/netket/archive/v{{ version }}.tar.gz
-  sha256: 881ae8605a829364b2116bc4398084766b24e2cd8958d0cb2b85595650e7bfd6
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/netket-{{ version }}.tar.gz
+  sha256: 9d15d32ccd07311e466627d628a236aa86e0bd8a4c799d19177934a137766ba9
 
 build:
   number: 0
-  skip: true  # [win or py<37]
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv --install-option=--cmake-args='-DNETKET_USE_LAPACK=OFF -DCMAKE_BUILD_TYPE=Release -DNETKET_USE_OPENMP=ON -DNETKET_USE_BLAS=ON -DNETKET_USE_SLEEF=ON'"
+  noarch: python
+  script:
+    - SETUPTOOLS_SCM_PRETEND_VERSION={{ version }} {{ PYTHON }} -m pip install --no-deps --ignore-installed --no-cache-dir -vvv .
 
 requirements:
-  build:
-    - {{ compiler('cxx') }}
-    - {{ compiler('c') }}
-    - cmake >=3.12
-    - ninja
   host:
+    - python >=3.8
     - pip
-    - python
-    - mpich
-    - libblas
-    - libgomp  # [linux]
-    - llvm-openmp  # [osx]
+    - setuptools >=45
+    - setuptools_scm >=3.4
+    - toml
   run:
-    - numpy >=1.16
-    - python 
-    - scipy >=1.2.1
-    - numba >=0.48
-    - mpich
-    - mpi4py
-    - tqdm
+    - python >=3.8
+    - numpy >=1.18
+    - scipy >=1.5.2
+    - networkx >=2.4
+    - jax >=0.2.9
+    - jaxlib >=0.1.57
+    - flax >=0.3.0
+    - optax >=0.0.2
+    - mpi4py >=3.0.1
+    - mpi4jax >=0.2.16
+    - numba >=0.52.0
+    - orjson >=3.4
+    - tqdm >=4.56.2    
 
 test:
   imports:
     - netket
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://www.netket.org
