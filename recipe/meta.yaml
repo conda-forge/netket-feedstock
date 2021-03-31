@@ -11,26 +11,26 @@ source:
 
 build:
   number: 0
-  skip: true  # [win or py<37]
+  noarch: python
   script:
     - SETUPTOOLS_SCM_PRETEND_VERSION={{ version }} {{ PYTHON }} -m pip install --no-deps --ignore-installed --no-cache-dir -vvv .
 
 requirements:
   host:
-    - python
+    - python >=3.8
     - pip
     - setuptools >=45
     - setuptools_scm >=3.4
     - toml
   run:
-    - python
+    - python >=3.8
     - numpy 
     - scipy >=1.5.2
     - networkx >=2.4
     - jax >=0.2.9
     - jaxlib >=0.1.57
     - flax >=0.3.0
-    - optx >=0.0.2
+    - optax >=0.0.2
     - mpi4py >=3.0.1
     - mpi4jax >=0.2.16
     - numba >=0.52
