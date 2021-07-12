@@ -1,5 +1,5 @@
 {% set name = "netket" %}
-{% set version = "3.0b2" %}
+{% set version = "3.0b3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/netket-{{ version }}.tar.gz
-  sha256: c6b0dbb7fabdc49ce7bcf3e6bedf95e8540ad4aba4a690cacad1cd129002021c
+  sha256: 9c722079be8976f1bc7e5a264cf6017fb098a34d750d39200c9e534d0a70685a
 
 build:
   number: 0
@@ -27,16 +27,16 @@ requirements:
     - numpy >=1.18
     - scipy >=1.5.2
     - networkx >=2.4
-    - jax >=0.2.9
-    - jaxlib >=0.1.57
+    - jax >=0.2.17
+    - jaxlib >=0.1.69
     - flax >=0.3.0
     - optax >=0.0.2
     - mpi4py >=3.0.1
-    - mpi4jax >=0.2.16
+    - mpi4jax >=0.3.1
     - numba >=0.52.0
     - orjson >=3.4
     - tqdm >=4.56.2
-    - plum-dispatch >=1.0.0
+    - plum-dispatch >=1.3.1
 
 test:
   imports:
