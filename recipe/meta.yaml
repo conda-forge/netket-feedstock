@@ -1,5 +1,5 @@
 {% set name = "netket" %}
-{% set version = "3.0b2" %}
+{% set version = "3.0b4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/netket-{{ version }}.tar.gz
-  sha256: c6b0dbb7fabdc49ce7bcf3e6bedf95e8540ad4aba4a690cacad1cd129002021c
+  sha256: 7e0fec43f3cafbba8cea9279769bafdb3db13d863b6d36fe144cdc319b8f75fa
 
 build:
   number: 0
@@ -26,23 +26,30 @@ requirements:
     - python >=3.8
     - numpy >=1.18
     - scipy >=1.5.2
-    - networkx >=2.4
-    - jax >=0.2.9
-    - jaxlib >=0.1.57
+    - python-igraph >=0.9
+    - jax >=0.2.17
+    - jaxlib >=0.1.69
     - flax >=0.3.0
     - optax >=0.0.2
     - mpi4py >=3.0.1
-    - mpi4jax >=0.2.16
+    - mpi4jax >=0.3.1
     - numba >=0.52.0
     - orjson >=3.4
     - tqdm >=4.56.2
-    - plum-dispatch >=1.0.0
+    - plum-dispatch >=1.5.1
 
 test:
-  imports:
-    - netket
   commands:
+    - |
     - pip check
+    
+    - export OMPI_MCA_plm=isolated
+    - export OMPI_MCA_btl_vader_single_copy_mechanism=none
+    - export OMPI_MCA_rmaps_base_oversubscribe=yes
+    - export OMPI_ALLOW_RUN_AS_ROOT=1
+    - export OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
+    
+    - python -c "import netket"
   requires:
     - pip
 
