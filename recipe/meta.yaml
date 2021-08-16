@@ -1,5 +1,5 @@
 {% set name = "netket" %}
-{% set version = "3.0b3.post2" %}
+{% set version = "3.0b4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/netket-{{ version }}.tar.gz
-  sha256: 2c09cd4c49052f0cfaa956899d79577713c9f59555673302e1a5cc6cef4031dd
+  sha256: 7e0fec43f3cafbba8cea9279769bafdb3db13d863b6d36fe144cdc319b8f75fa
 
 build:
   number: 0
@@ -36,7 +36,7 @@ requirements:
     - numba >=0.52.0
     - orjson >=3.4
     - tqdm >=4.56.2
-    - plum-dispatch >=1.3.1
+    - plum-dispatch >=1.5.1
 
 test:
   commands:
