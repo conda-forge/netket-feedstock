@@ -1,5 +1,5 @@
 {% set name = "netket" %}
-{% set version = "3.0" %}
+{% set version = "3.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/netket-{{ version }}.tar.gz
-  sha256: 28f26052c1f09f3a96653706f47f78d96180d0b0ac4de7990319a94acc512857
+  sha256: 64ef80daf983569aefb6e3c50bffa297e4418936f8bbc36fa0d1b0669346d7fa
 
 build:
   number: 0
@@ -42,13 +42,13 @@ test:
   commands:
     - |
     - pip check
-    
+
     - export OMPI_MCA_plm=isolated
     - export OMPI_MCA_btl_vader_single_copy_mechanism=none
     - export OMPI_MCA_rmaps_base_oversubscribe=yes
     - export OMPI_ALLOW_RUN_AS_ROOT=1
     - export OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
-    
+
     - python -c "import netket"
   requires:
     - pip
@@ -58,7 +58,7 @@ about:
   license: Apache-2.0
   license_family: APACHE
   license_file: LICENSE
-  summary: 'Machine Learning for Many-Body Quantum Systems'
+  summary: Machine Learning for Many-Body Quantum Systems
   description: |
     NetKet is an open-source project delivering cutting-edge methods 
     for the study of many-body quantum systems with artificial neural 
