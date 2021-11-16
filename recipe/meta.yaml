@@ -33,6 +33,7 @@ requirements:
     - optax >=0.0.2
     - mpi4py >=3.0.1
     - mpi4jax >=0.3.1
+    - numba4jax >= 0.0.1
     - numba >=0.52.0
     - orjson >=3.4
     - tqdm >=4.56.2
