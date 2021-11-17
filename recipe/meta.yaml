@@ -43,6 +43,8 @@ requirements:
 test:
   commands:
     - |
+    # remove this line once netket depends on igraph instead of python-igraph
+    - pip install igraph
     - pip check
 
     - export OMPI_MCA_plm=isolated
