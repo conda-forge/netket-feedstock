@@ -1,5 +1,6 @@
 {% set name = "netket" %}
-{% set version = "3.0.4" %}
+{% set version = "3.1.1" %}
+
 
 package:
   name: {{ name|lower }}
@@ -7,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/netket-{{ version }}.tar.gz
-  sha256: a4f9799d5b78976b3ba4173d26db51c80e7594ee75b13741ba38b65e25b63003
+  sha256: 627d2d69f5803dd894fc7e83b42a820c5252f190198fc281a63d0c0376fa5b2d
 
 build:
   number: 0
@@ -28,11 +29,12 @@ requirements:
     - scipy >=1.5.2
     - python-igraph >=0.9
     - jax >=0.2.17
-    - jaxlib >=0.1.69
-    - flax >=0.3.0
+    - jaxlib >0.1.70
+    - flax >=0.3.5
     - optax >=0.0.2
     - mpi4py >=3.0.1
     - mpi4jax >=0.3.1
+    - numba4jax >=0.0.4
     - numba >=0.52.0
     - orjson >=3.4
     - tqdm >=4.56.2
@@ -41,6 +43,8 @@ requirements:
 test:
   commands:
     - |
+    # remove this line once netket depends on igraph instead of python-igraph
+    - pip install python-igraph
     - pip check
 
     - export OMPI_MCA_plm=isolated
