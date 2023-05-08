@@ -1,11 +1,11 @@
-About netket
-============
+About netket-feedstock
+======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/netket-feedstock/blob/main/LICENSE.txt)
 
 Home: https://www.netket.org
 
 Package license: Apache-2.0
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/netket-feedstock/blob/main/LICENSE.txt)
 
 Summary: Machine Learning for Many-Body Quantum Systems
 
