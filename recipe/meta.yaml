@@ -1,5 +1,5 @@
 {% set name = "netket" %}
-{% set version = "3.9.2" %}
+{% set version = "3.10.1" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/netket-{{ version }}.tar.gz
-  sha256: 38cf7e9b631415b61b8d90554d32daeded3ca6df2fa050fceac216d1e707b162
+  sha256: 48a4130af5e6c4057ce7fdf0b02bafd04a9ecfcada00cb9c05efe1e1a34e19aa
 
 build:
   number: 0
