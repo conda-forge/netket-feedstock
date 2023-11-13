@@ -1,5 +1,5 @@
 {% set name = "netket" %}
-{% set version = "3.9.2" %}
+{% set version = "3.10.1" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/netket-{{ version }}.tar.gz
-  sha256: 38cf7e9b631415b61b8d90554d32daeded3ca6df2fa050fceac216d1e707b162
+  sha256: 48a4130af5e6c4057ce7fdf0b02bafd04a9ecfcada00cb9c05efe1e1a34e19aa
 
 build:
   number: 0
@@ -23,21 +23,22 @@ requirements:
     - hatchling >=1.10
     - hatch-vcs >=0.3
   run:
-    - python >=3.8
-    - numpy >=1.18
+    - python >=3.9
+    - numpy >=1.20
     - scipy >=1.5.2
     - python-igraph >=0.9
-    - jax >=0.3.16
-    - jaxlib >0.3.15
-    - flax >=0.6.0
+    - jax >=0.4.3
+    - flax >=0.7.1
     - optax >=0.1.3
     - mpi4py >=3.0.1
     - mpi4jax >=0.3.1
     - numba4jax >=0.0.9
-    - numba >=0.52.0
+    - numba >=0.52.0, <0.58
     - orjson >=3.4
     - tqdm >=4.56.2
-    - plum-dispatch >=1.5.1
+    - beartype >=0.12
+    - rich >=10.0
+    - typing-extensions >=4.0
 
 test:
   commands:
