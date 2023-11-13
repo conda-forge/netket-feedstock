@@ -37,8 +37,8 @@ requirements:
     - orjson >=3.4
     - tqdm >=4.56.2
     - beartype >=0.12
-    - rich >= 10.0
-    - typing-extensions >= 4.0
+    - rich >=10.0
+    - typing-extensions >=4.0
 
 test:
   commands:
