@@ -7,23 +7,23 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/netket-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/netket-{{ version }}.tar.gz
   sha256: a68514dc1e41235b3e4ca403c8f05bcf058864ec67d1a8c842977d11b152f6e3
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script:
     - {{ PYTHON }} -m pip install --no-deps --ignore-installed --no-cache-dir -vvv .
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - pip
     - hatchling >=1.10
     - hatch-vcs >=0.3
   run:
-    - python >=3.9
+    - python >={{ python_min }}
     - numpy >=1.20
     - scipy >=1.5.2
     - python-igraph >=0.9
@@ -56,6 +56,7 @@ test:
     - python -c "import netket; print(netket.__version__)"
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://www.netket.org
